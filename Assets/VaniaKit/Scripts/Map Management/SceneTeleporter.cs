@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Vaniakit.Manager;
 
 namespace Vaniakit.Map.Management
 {
@@ -24,7 +26,8 @@ namespace Vaniakit.Map.Management
         /// </summary>
         private void Start()
         {
-            GetComponent<BoxCollider2D>().isTrigger = true;       
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            
         }
 
         /// <summary>
@@ -36,11 +39,7 @@ namespace Vaniakit.Map.Management
             if (!justTeleported && other.CompareTag("Player"))
             {
                 Debug.Log("Trigger entered");
-                StartCoroutine((FadeToBlack()));
-                
-                StartCoroutine(loadNewScene());
-                
-                StartCoroutine((unFadeFromBlack()));
+                StartCoroutine(FadeInManager.instance.FadeToBlack(sceneName,destination)); //Loads a new scene and unloads the current scene
             }
             else
             {
@@ -51,64 +50,10 @@ namespace Vaniakit.Map.Management
             }
         }
 
-        private IEnumerator FadeToBlack() //Not implemented yet 
+        public void justTeleportedHere()
         {
-            yield return new WaitForEndOfFrame();
+            justTeleported = true;
         }
-
-        private IEnumerator loadNewScene()
-        {
-            Scene currentScene = SceneManager.GetActiveScene();
-            AsyncOperation sceneLoading = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);//Load scene async
-            while (sceneLoading.isDone == false)
-            {
-                yield return null;
-            }
-
-            if (sceneLoading.isDone)
-            {
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
-                Debug.Log("Scene loading done");
-                findSpawnPoint();
-            }
-            //If scene loaded teleport the player to the spawn point 
-            //Unload this scene
-            SceneManager.UnloadSceneAsync(currentScene);
-        }
-        private IEnumerator unFadeFromBlack() //Not implemented yet
-        {
-            yield return new WaitForEndOfFrame(); 
-        }
-
-        private void findSpawnPoint()
-        {
-            SceneTeleporter[] sceneTeleporter = FindObjectsByType<SceneTeleporter>(FindObjectsSortMode.None);
-            Transform spawnPoint = null;
-
-            foreach (SceneTeleporter spawnPoints in sceneTeleporter)
-            {
-                if (spawnPoints.gameObject.scene.name == sceneName)
-                {
-                    Debug.Log("In right scene");
-                    if (spawnPoints.gameObject.name == destination)
-                    {
-                        Debug.Log("Found destination");
-                        spawnPoints.justTeleported = true;
-                        spawnPoint = spawnPoints.gameObject.transform;
-                        break;
-                    }
-                }
-            }
-            if (spawnPoint != null)
-            {
-                GameObject.FindGameObjectWithTag("Player").transform.position = spawnPoint.position;
-            }
-            else
-            { 
-                Debug.LogError("No point called {" + destination + "} found");
-            }
-        }
-        
     }
 
 }

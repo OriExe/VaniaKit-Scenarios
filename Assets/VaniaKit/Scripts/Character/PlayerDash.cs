@@ -11,12 +11,12 @@ namespace Vaniakit.Player
 
         protected virtual void onPlayerDash()
         {
-            
+            Debug.Log("Dash");
         }
 
         protected virtual void onPlayerDashFinish()
         {
-            
+            Debug.Log("Dash Finished");
         }
         #endregion
         [SerializeField] private float dashDistance;
@@ -34,8 +34,9 @@ namespace Vaniakit.Player
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Start()
         {
-            playerJump = GetComponent<PlayerJump>();
-            _playerController = GetComponent<PlayerController>();
+            
+            playerJump = GetComponentInParent<PlayerJump>();
+            _playerController = GetComponentInParent<PlayerController>();
             currentGravityScale = _playerController.getPlayerRigidbody().gravityScale;
             DashAction = InputSystem.actions.FindAction("Dash");
         }
@@ -45,7 +46,6 @@ namespace Vaniakit.Player
         {
             if (DashAction.WasPressedThisFrame() && !hasDashed) //Triggers the dash
             {
-                Debug.Log("Dash");
                 hasDashed = true;
                 playerJump.isDashing = true;
                 _playerController.getPlayerRigidbody().gravityScale = 0;
@@ -65,7 +65,7 @@ namespace Vaniakit.Player
                 {
                     playerDirection = 1;
                 }
-                transform.position = Vector2.Lerp(transform.position,transform.position + Vector3.right * (playerDirection * dashDistance),dashingTime);
+                transform.parent.position = Vector2.Lerp(transform.parent.position,transform.parent.position + Vector3.right * (playerDirection * dashDistance),dashingTime);
                 
             }
 

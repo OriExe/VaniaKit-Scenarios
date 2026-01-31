@@ -25,6 +25,5 @@ public class Movement : Vaniakit.Player.PlayerMovement
   protected override void onPlayerIdle()
   {
     _animator.SetBool("Walking", false);
-    _spriteRenderer.flipX = false;
   }
 }
