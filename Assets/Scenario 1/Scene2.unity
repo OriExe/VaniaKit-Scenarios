@@ -33636,14 +33636,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 647186064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2a729908ff9b1b0b061a674ef73baa, type: 3}
+  m_Script: {fileID: 11500000, guid: 55f186858eac48f4f9525bfcc254363c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item:
     item: {fileID: 11400000, guid: d2e5c77e03098360aa75287b3297ac6c, type: 2}
     amountOfItem: 1
     spawnAtStart: 0
-  showText: Press E to get Double Jump
+  showText: Press E for Double Jump
 --- !u!212 &647186067
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48111,14 +48111,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 939997052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2a729908ff9b1b0b061a674ef73baa, type: 3}
+  m_Script: {fileID: 11500000, guid: 55f186858eac48f4f9525bfcc254363c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   item:
     item: {fileID: 11400000, guid: 87df944f4ea47050fb1766d4e7f75255, type: 2}
     amountOfItem: 1
     spawnAtStart: 0
-  showText: Press E to get Dash
+  showText: Press E for dash
 --- !u!61 &939997056
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 namespace Vaniakit.Player
 {
+    /// <summary>
+    /// A dashing script for the player 
+    /// </summary>
     public class PlayerDash : MonoBehaviour, IEquipable
     {
         #region Events
@@ -17,6 +20,11 @@ namespace Vaniakit.Player
         protected virtual void onPlayerDashFinish()
         {
             Debug.Log("Dash Finished");
+        }
+
+        protected virtual void onPlayerDashReady()
+        {
+            Debug.Log("Dash Ready");
         }
         #endregion
         [SerializeField] private float dashDistance;
@@ -37,19 +45,18 @@ namespace Vaniakit.Player
             
             playerJump = GetComponentInParent<PlayerJump>();
             _playerController = GetComponentInParent<PlayerController>();
-            currentGravityScale = _playerController.getPlayerRigidbody().gravityScale;
+            currentGravityScale = _playerController.getPlayerRigidbody().gravityScale; //Stores the current gravity scale when the game starts NOTE this will mean any gravity scale changes made won't be saved and this script will revert back to the old instance when dashed is used.
             DashAction = InputSystem.actions.FindAction("Dash");
         }
 
         // Update is called once per frame https://www.youtube.com/watch?v=lckH-nJi2j8
         private void Update()
         {
-            if (DashAction.WasPressedThisFrame() && !hasDashed) //Triggers the dash
+            if (DashAction.WasPressedThisFrame() && !hasDashed && dashTimeLeft == dashingTime) //Triggers the dash
             {
                 hasDashed = true;
                 playerJump.isDashing = true;
                 _playerController.getPlayerRigidbody().gravityScale = 0;
-                dashTimeLeft = dashingTime;
                 onPlayerDash();
             }
 
@@ -76,11 +83,19 @@ namespace Vaniakit.Player
                 _playerController.getPlayerRigidbody().gravityScale = currentGravityScale;
                 onPlayerDashFinish();
             }
+
+            if (dashTimeLeft <= 0 && playerJump.isGrounded)
+            {
+                hasDashed = false;
+                dashTimeLeft = dashingTime;
+                onPlayerDashReady();
+            }
             
         }
         public void Equip()
         {
-            Instantiate(gameObject, transform.position, transform.rotation,GameObject.FindGameObjectWithTag("Player").transform);
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Instantiate(gameObject, player.transform.position, transform.rotation,player.transform);
         }
 
         public void Unequip()
