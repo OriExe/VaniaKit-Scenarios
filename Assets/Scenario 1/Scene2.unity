@@ -33643,7 +33643,7 @@ MonoBehaviour:
     item: {fileID: 11400000, guid: d2e5c77e03098360aa75287b3297ac6c, type: 2}
     amountOfItem: 1
     spawnAtStart: 0
-  showText: Press E for Double Jump
+  showText: Press Q for Double Jump
 --- !u!212 &647186067
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -48118,7 +48118,7 @@ MonoBehaviour:
     item: {fileID: 11400000, guid: 87df944f4ea47050fb1766d4e7f75255, type: 2}
     amountOfItem: 1
     spawnAtStart: 0
-  showText: Press E for dash
+  showText: Press Q for dash
 --- !u!61 &939997056
 BoxCollider2D:
   m_ObjectHideFlags: 0
