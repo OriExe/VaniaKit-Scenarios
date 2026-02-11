@@ -518,8 +518,6 @@ GameObject:
   - component: {fileID: 14855128}
   - component: {fileID: 14855127}
   - component: {fileID: 14855126}
-  - component: {fileID: 14855125}
-  - component: {fileID: 14855124}
   - component: {fileID: 14855122}
   m_Layer: 0
   m_Name: Player
@@ -550,35 +548,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &14855124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14855121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f5392085f93e0b8e87088afbdba5de6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 11.58
-  _animator: {fileID: 14855122}
-  _spriteRenderer: {fileID: 14855128}
---- !u!114 &14855125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 14855121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4edc6092ebf18c132bce4bc83b53a7d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 14855126}
-  startingHealth: 100
 --- !u!50 &14855126
 Rigidbody2D:
   serializedVersion: 5
@@ -595,7 +564,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1.9
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: af66de6a556aaf043b4e19926481eb25, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
