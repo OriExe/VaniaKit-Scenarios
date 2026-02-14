@@ -91,6 +91,7 @@ namespace Vaniakit.Player
             {
                 isInAir = true;
                 playerHasDoubleJumped = false;
+                onPlayerLeavesGround();
             }
 
             if ( m_jumpAction.WasPressedThisFrame() && !isGrounded && !playerHasDoubleJumped && doubleJumpEnabled)//Let the player double jump

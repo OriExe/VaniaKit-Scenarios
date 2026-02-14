@@ -5,6 +5,7 @@ public class Movement : Vaniakit.Player.PlayerMovement
 {
   [SerializeField] private Animator _animator;
   [SerializeField] private SpriteRenderer _spriteRenderer;
+  
   protected override void onPlayerMove(lookStatesHorizontal direction)
   {
     switch (direction)

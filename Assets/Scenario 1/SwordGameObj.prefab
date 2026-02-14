@@ -195,6 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  range: 10
+  range: 14.96
   secondsToWaitTillNextAttack: 0.42
   attackingBox: {fileID: 2228714785293332058}

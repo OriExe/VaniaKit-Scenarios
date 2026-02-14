@@ -94,8 +94,8 @@ namespace Vaniakit.Player
         }
         public void Equip()
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            Instantiate(gameObject, player.transform.position, transform.rotation,player.transform);
+            GameObject player = GameObject.FindGameObjectWithTag("Player"); //Find player Object
+            Instantiate(gameObject, player.transform.position, transform.rotation,player.transform); //Create this object as a child of the player
         }
 
         public void Unequip()
