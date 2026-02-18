@@ -24463,8 +24463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ecd926644168956adbac8f03a0b43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: Spawn
-  sceneName: Scene2
+  destination: GameobjectName
+  sceneName: Scene
 --- !u!61 &1646928992
 BoxCollider2D:
   m_ObjectHideFlags: 0
