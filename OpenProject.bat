@@ -1,0 +1,1 @@
+"C:\Program Files\Unity\Hub\Editor\6000.0.58f2\Editor\Unity.exe" --projectpath %~1
